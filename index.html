@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e8f7fb">
+<title>Secret Kode 💙</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pacifico&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>window.ph=function(n){var d=document.createElement('div');d.className='ph';d.textContent='📷 taruh '+n+' di folder assets';return d;}</script>
+</head>
+<body>
+<div id="floaters"></div>
+
+<!-- 0. TAP START (wajib supaya browser mengizinkan suara) -->
+<section id="start" class="screen active">
+  <button id="startBtn" class="btn-start">💙 Tap untuk mulai</button>
+  <p class="hint">nyalain suara ya, sayang 🔊</p>
+</section>
+
+<!-- 1. LOADING -->
+<section id="loading" class="screen">
+  <div class="mascots">
+    <span class="m flower">🌻</span>
+    <span class="m heart">💙</span>
+    <span class="m nailong" id="nailong">
+      <img src="assets/nailong.png" alt="nailong" onerror="this.parentNode.textContent='🐥'">
+    </span>
+    <span class="m heart d2">💙</span>
+    <span class="m flower d3">🌼</span>
+  </div>
+  <h1 class="load-title">Loading secret kode<span class="dots"></span></h1>
+  <div class="bar"><i id="barFill"></i></div>
+  <p class="pct" id="pct">0%</p>
+</section>
+
+<!-- 2. INPUT KODE -->
+<section id="gate" class="screen">
+  <div class="scene">
+    <div class="card3d" id="card">
+      <div class="card-glow"></div>
+      <div class="layer l-top">🔒</div>
+      <h2 class="layer l-mid">ISI TANGGAL JADIAN KITA WELEKKK</h2>
+      <input class="layer l-in" id="code" type="text" inputmode="numeric" autocomplete="off"
+             maxlength="10" placeholder="DD-MM-YYYY" aria-label="Tanggal jadian">
+      <button class="layer l-btn" id="go">Buka 💌</button>
+      <p class="layer l-err" id="err"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ISI WEBSITE -->
+<div id="cover"></div>
+<div id="glow"></div>
+<section id="main" class="screen">
+  <div class="wrap">
+    <div id="giftGate" class="gift-gate">
+      <div class="gift">🎁</div>
+      <h1 class="hero">Tunggu dulu bae💙</h1>
+      <p class="sub">Before buka gift nya dengerin lagu ini dulu (pencet tombol play ▶),lagu ini tentang kamu jiakhhh.</p>
+      <div class="player">
+        <img class="p-art" src="assets/foto2.jpg" alt="" onerror="this.style.display='none'">
+        <div class="p-meta"><small id="pSub">Lagu tentang hukma sayang 💙</small><b id="pTitle">W.H.U.T</b></div>
+        <div class="p-bar"><span id="pCur">0:00</span><input type="range" id="pSeek" min="0" max="1000" value="0" aria-label="Posisi lagu"><span id="pRem">-0:00</span></div>
+        <div class="p-ctl">
+          <button id="pBack" aria-label="Mundur 10 detik"><svg viewBox="0 0 24 24"><path d="M11 5v14L2 12zM22 5v14l-9-7z"/></svg></button>
+          <button id="pPlay" class="big" aria-label="Putar/jeda"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></button>
+          <button id="pFwd" aria-label="Maju 10 detik"><svg viewBox="0 0 24 24"><path d="M13 5v14l9-7zM2 5v14l9-7z"/></svg></button>
+        </div>
+        <div class="p-vol"><span>🔈</span><input type="range" id="pVol" min="0" max="100" value="90" aria-label="Volume"><span>🔊</span></div>
+      </div>
+      <button id="openGift" class="btn-open" disabled>Buka gift 🎁</button>
+    </div>
+    <div id="giftContent" hidden>
+      <h1 class="hero">Welcome bae sayang cantik ku 💙</h1>
+      <p class="sub">Ini hadiah and kenangan buat kamu.</p>
+      <div class="carousel" id="carousel" aria-label="Memories">
+        <div class="ring" id="ring"></div>
+      </div>
+      <p class="car-cap">Memories · geser atau klik foto nya ya</p>
+      <div class="gallery">
+        <figure class="photo" id="k2" title="Klik untuk membuka bunga"><img src="assets/kenangan2-bg.jpg" alt="Kenangan 2" onerror="this.replaceWith(ph('kenangan2-bg.jpg'))"><figcaption>Kenangan 2</figcaption></figure>
+        <figure class="photo" id="k3" title="Klik untuk membuka surat"><img src="assets/kenangan3-bg.jpg" alt="Kenangan 3" onerror="this.replaceWith(ph('kenangan3-bg.jpg'))"><figcaption>Kenangan 3 💌</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="bloom" hidden>
+  <button id="bloomClose" aria-label="Tutup">✕</button>
+  <svg id="bSvg" class="b-stage" viewBox="0 -80 400 800" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+    <defs>
+      <radialGradient id="gPet" cx="50%" cy="58%" r="68%"><stop offset="0" stop-color="#ffc4dc"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#ffeaf4"/></radialGradient>
+      <linearGradient id="gLeaf" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1c7a4c"/><stop offset="1" stop-color="#78dca0"/></linearGradient>
+      <linearGradient id="gStem" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#1a6e45"/><stop offset="1" stop-color="#5fcf92"/></linearGradient>
+      <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#ffd3e8"/></linearGradient>
+      <linearGradient id="gPaper2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe6f2"/><stop offset="1" stop-color="#f7b7d6"/></linearGradient>
+    </defs>
+    <g id="bRoot"></g>
+  </svg>
+  <div class="polaroid" id="polaroid">
+    <div class="pol-img"><img src="assets/bunga1.jpg" class="on" alt=""><img src="assets/bunga2.jpg" alt=""><img src="assets/bunga3.jpg" alt=""></div>
+    <p>bunga cantik buat orang cantik 💙</p>
+  </div>
+  <p class="b-cap">Karena ga bisa kasih bunga nyata dulu, aku kasih bunga spesial dari nailong haha💙</p>
+</div>
+<div id="letter" hidden>
+  <div class="lt-bg"></div>
+  <button id="letterClose" aria-label="Tutup">✕</button>
+  <div class="lt-scene" id="ltScene">
+    <div class="lt-card" id="ltCard">
+      <div class="lt-back"></div>
+      <div class="lt-paper">
+        <div class="lt-text" id="ltText">
+          <!-- ISI SURAT: edit tulisan di bawah ini kalau mau diganti -->
+          <p class="to">To my dearest Bae,</p>
+          <p>Sometimes, I wonder how I got so lucky to have someone like you in my life. Out of all the people in this world, somehow my heart found its way to you. A girl as beautiful as you, with a smile that could make even my hardest days feel a little lighter.</p>
+          <p>Bae, I hope you know how beautiful you are, not only in my eyes but in all the little things that make you who you are. I could spend hours looking at you and still find a thousand reasons to fall in love with you all over again. There's something about you that words will never be enough to describe.</p>
+          <p>I don't know what I did to deserve you, but I know that having you is one of the sweetest blessings life has ever given me. I feel lucky that I get to call you mine, lucky that I get to know the little things about you, and even luckier that I get to love you.</p>
+          <p>If I could go back and choose again, among billions of people, I would still look for you. I would still choose your smile, your laughter, your beautiful heart, and every little thing that makes you, you.</p>
+          <p>I may not always have the perfect words, and I may not always know how to show just how much you mean to me. But please, never doubt that you are someone precious to me.</p>
+          <p>Thank you for being you, Bae. I hope life is always gentle with you, and I hope I can be one of the reasons you smile a little more every day.</p>
+          <p>If there's one thing I wish you could see, it's yourself through my eyes. Maybe then you'd understand why I feel like the luckiest person in the world.</p>
+          <p class="sign">With all my love,<br>The one who's always grateful to have you. ❤️</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="lt-hint">geser / gerakkan kursor untuk memutar kartu · bisa scroll isi surat</p>
+</div>
+<audio id="song" loop preload="auto"></audio>
+<script src="script.js"></script>
+</body>
+</html>
